@@ -1,0 +1,38 @@
+{
+  "name": "bwg-inspect",
+  "version": "0.0.1",
+  "description": "查看你的搬瓦工信息",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node scripts/run.js",
+    "build": "NODE_ENV=production node scripts/run.js"
+  },
+  "author": "darrenWang",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.6.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "glob": "^7.1.2",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "ora": "^2.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.6",
+    "postcss-url": "^7.3.2",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.0",
+    "webpack-chrome-extension-reloader": "^0.8.3",
+    "webpack-merge": "^4.1.3"
+  }
+}
