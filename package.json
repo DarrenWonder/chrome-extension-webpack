@@ -1,6 +1,6 @@
 {
   "name": "bwg-inspect",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "查看你的搬瓦工信息",
   "main": "index.js",
   "scripts": {
