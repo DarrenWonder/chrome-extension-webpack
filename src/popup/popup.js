@@ -19,15 +19,22 @@ const loadingTmpl = `
 </div>  
 `;
 
-let indexShow = false
-let guideShow = false
+let indexShow = false;
+let guideShow = false;
 
-function saveKey(key, cb) {
-  if (!key) {
-    throw new Error("请输入key");
+function saveKey(veid, key, cb) {
+  if (!veid) {
+    const err = new Error("请输入veid");
+    err.key = "veid";
+    throw err;
   }
-  chrome.storage.sync.set({ userKey: key }, function() {
-    if (cb) cb(key);
+  if (!key) {
+    const err = new Error("请输入key");
+    err.key = "key";
+    throw err;
+  }
+  chrome.storage.sync.set({ veid, userKey: key }, function() {
+    if (cb) cb(veid, key);
   });
 }
 
@@ -64,16 +71,16 @@ function cacuPeriod(date) {
 }
 
 function cloneDate(date) {
-  return new Date(date.toDateString())
+  return new Date(date.toDateString());
 }
 
 $(function() {
   render(loadingTmpl);
-  chrome.storage.sync.get(["userKey"], function(result) {
-    if (result.userKey) {
-      showIndex(result.userKey)
+  chrome.storage.sync.get(["veid", "userKey"], function(result) {
+    if (result.userKey && result.veid) {
+      showIndex(result.veid, result.userKey);
     } else {
-      showGuide()
+      showGuide();
     }
   });
 });
@@ -81,7 +88,7 @@ $(function() {
 function showGuide() {
   render(guideTmpl()).addClass("has-bg");
   if (guideShow) {
-    return
+    return;
   }
   $("body").particleground({
     dotColor: "#E8DFE8",
@@ -89,21 +96,22 @@ function showGuide() {
   });
   $("body").on("click", ".submit-btn", function() {
     try {
-      saveKey($("#key").val(), function (key) {
-        showIndex(key)
+      saveKey($("#veid").val(), $("#key").val(), function(veid, key) {
+        showIndex(veid, key);
+        $("body").removeClass("has-bg");
       });
     } catch (e) {
-      showError($("#key"), e.message);
+      showError($("#" + e.key), e.message);
     }
   });
   $("body").on("input", "#key", function() {
     hideError($("#key"));
   });
-  guideShow = true
+  guideShow = true;
 }
 
-function showIndex(key) {
-  fetchData(key, function(res) {
+function showIndex(veid, key) {
+  fetchData(veid, key, function(res) {
     let data = {
       ip_address: res.ip_addresses[0]
     };
@@ -124,15 +132,15 @@ function showIndex(key) {
     data.data = {
       now,
       max
-    }
+    };
     render(indexTmpl(data));
     drawLayer03Right($("#arc")[0], "#238681", dataPer);
-    if (indexShow) return
-    $("body").on("click", "#logout", function () {
-      chrome.storage.sync.clear()
-      showGuide()
-    })
-    indexShow = true
+    if (indexShow) return;
+    $("body").on("click", "#logout", function() {
+      chrome.storage.sync.clear();
+      showGuide();
+    });
+    indexShow = true;
   });
 }
 
@@ -167,8 +175,11 @@ function drawLayer03Right(canvasObj, colorValue, rate) {
   ctx.fillText(rate * 100 + "%", circle.x - 15, circle.y + 10);
 }
 
-function fetchData(key, cb) {
-  $.get("http://59.110.159.233:8080/test?pkey=" + key, function(res) {
-    cb(res);
-  });
+function fetchData(veid, key, cb) {
+  $.get(
+    ENDPOINT + "test?veid=" + veid + "&pkey=" + key,
+    function(res) {
+      cb(res);
+    }
+  );
 }

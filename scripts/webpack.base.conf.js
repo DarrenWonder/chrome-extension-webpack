@@ -2,9 +2,11 @@ var path = require("path");
 var webpack = require("webpack");
 var utils = require("./utils");
 var mode = process.env.NODE_ENV;
+var settings = require("../config/settings");
 var multi = utils.multiEntry();
 var config = require("../config")[mode];
 var CopyWebpackPlugin = require("copy-webpack-plugin");
+var GenerateJsonPlugin = require('generate-json-webpack-plugin');
 
 function resolve(dir) {
 	return path.join(__dirname, "..", dir);
@@ -45,6 +47,9 @@ module.exports = {
 	},
 	devtool: config.devtool,
 	plugins: [
+		new webpack.DefinePlugin({
+			ENDPOINT: JSON.stringify(config.endPoint)
+		}),
 		...utils.getHtml(multi.htmls),
 		new webpack.ProvidePlugin({
 		  $: '@/vendor/js/jquery-3.1.1.min',
@@ -55,6 +60,7 @@ module.exports = {
 				from: path.join(config.sourcePath, config.assetsSub),
 				to: config.assetsSub
 			}
-		])
+		]),
+		new GenerateJsonPlugin('manifest.json', settings, null, 2)
 	]
 };

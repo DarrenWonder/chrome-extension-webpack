@@ -38,11 +38,6 @@ if (mode === "development") {
         console.log(chalk.red("  Build failed with errors.\n"));
         process.exit(1);
       }
-      utils.writeJson(settings, config.assetsRoot + "/manifest.json", function(
-        err
-      ) {
-        if (err) throw err;
-      });
       console.log(chalk.cyan("Build success. Watching mode..."));
     }
   );
@@ -66,11 +61,6 @@ if (mode === "development") {
       console.log(chalk.red("  Build failed with errors.\n"));
       process.exit(1);
     }
-    utils.writeJson(settings, config.assetsRoot + "/manifest.json", function(
-      err
-    ) {
-      if (err) throw err;
-    });
     console.log(chalk.cyan("Build success"));
   });
 }

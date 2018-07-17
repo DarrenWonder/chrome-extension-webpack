@@ -7,7 +7,8 @@ module.exports = {
 		sourcePath: path.resolve(__dirname, "../src"),
 		sourceMap: true,
 		cssExtra: false,
-		devtool: 'cheap-module-eval-source-map'
+		devtool: 'cheap-module-eval-source-map',
+		endPoint: 'http://homestead.test/'
 	},
 	production: {
 		assetsRoot: path.resolve(__dirname, "../dist"),
@@ -16,6 +17,7 @@ module.exports = {
 		sourcePath: path.resolve(__dirname, "../src"),
 		sourceMap: false,
 		cssExtra: true,
-		devtool: '#source-map'
+		devtool: '#source-map',
+		endPoint: 'http://59.110.159.233:8080/'
 	}
 }
