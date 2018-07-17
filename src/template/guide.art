@@ -1,0 +1,16 @@
+<div class="guide">
+  <div class="guide-brand">
+    BWG小工具
+  </div>
+  <div class="guide-title">
+    您尚未使用过该系统<br>请输入api key
+  </div>
+  <div class="guide-body">
+    <div class="form-group">
+      <input type="text" id="key" placeholder="api key">
+    </div>
+    <div class="form-group">
+      <button class="submit-btn">确认</button>
+    </div>
+  </div>
+</div>

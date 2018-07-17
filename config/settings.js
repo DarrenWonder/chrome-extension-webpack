@@ -20,6 +20,8 @@ var settings = {
 			"48": "assets/logo48.png",
 			"128": "assets/logo128.png"
 		}
-	}
+	},
+	permissions: ["storage", "http://homestead.test/", "http://59.110.159.233:8080/"],
+	content_security_policy: "script-src 'self' 'unsafe-eval'; object-src 'self'"
 };
 module.exports = Object.assign({}, baseConfig, settings);

@@ -1,3 +1,139 @@
+html {
+  width: 375px;
+  height: 550px;
+}
+
+html,
 body {
-	background-color: red;
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+}
+
+body.has-bg {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #242645;
+  background-size: cover;
+  background-image: url("../assets/Starry.jpg");
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(53, 57, 74, 0)',endColorstr='rgb(0, 0, 0)',GradientType=1 );
+}
+
+.guide {
+  box-shadow: -15px 15px 15px rgba(6, 17, 47, 0.7);
+  opacity: 1;
+  top: 20px;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  padding: 40px 40px 40px;
+  background: #35394a;
+  background: linear-gradient(
+    230deg,
+    rgba(53, 57, 74, 0) 0%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+.guide .guide-brand {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.guide .guide-title {
+  color: #d3d7f7;
+  height: 60px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.guide input {
+  color: #61bfff;
+  width: 190px;
+  margin-top: -2px;
+  background: transparent;
+  left: 0;
+  padding: 10px;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-right: 0;
+  border-left: 0;
+  outline: 0;
+  font-family: gudea, sans-serif;
+  box-shadow: none;
+}
+
+.guide input::-webkit-input-placeholder {
+	color: #cecfd2;
+	opacity: 1;
+}
+
+.guide .submit-btn {
+  border-radius: 50px;
+  background: 0 0;
+  padding: 10px 50px;
+  border: 2px solid #4fa1d9;
+  color: #4fa1d9;
+  text-transform: uppercase;
+  font-size: 11px;
+  transition-property: background, color;
+  transition-duration: 0.2s;
+}
+
+.guide .submit-btn:focus {
+  box-shadow: none;
+	outline: 0;
+}
+
+.guide .submit-btn:hover {
+  color: #fff;
+	background: #4fa1d9;
+	cursor: pointer;
+	transition-property: background, color;
+	transition-duration: 0.2s;
+}
+
+.navbar-header {
+  padding-right: 20px;
+}
+
+.wrapper {
+  padding: 20px 20px 0;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex-left {
+  flex: 0 0 80px;
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.flex-right {
+  flex: 1 0 auto;
+}
+
+.ibox-content {
+  padding: 15px;
+}
+
+.sk-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }

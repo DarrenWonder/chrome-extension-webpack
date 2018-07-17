@@ -3,7 +3,7 @@ module.exports = {
 	development: {
 		assetsRoot: path.resolve(__dirname, "../dist"),
 		assetsSub: "assets",
-		assetsPublicPath: "",
+		assetsPublicPath: "/",
 		sourcePath: path.resolve(__dirname, "../src"),
 		sourceMap: true,
 		cssExtra: false,
@@ -12,7 +12,7 @@ module.exports = {
 	production: {
 		assetsRoot: path.resolve(__dirname, "../dist"),
 		assetsSub: "assets",
-		assetsPublicPath: "",
+		assetsPublicPath: "/",
 		sourcePath: path.resolve(__dirname, "../src"),
 		sourceMap: false,
 		cssExtra: true,

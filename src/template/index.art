@@ -1,0 +1,38 @@
+<div class="row border-bottom">
+  <nav class="navbar navbar-static-top" role="navigation">
+      <div class="navbar-header">
+          <button class="btn btn-default  dim navbar-toggle" id="logout" type="button"><i class="fa fa-star"></i>切换账号</button>
+          <span class="navbar-brand">BWG查看器</span>
+      </div>
+  </nav>
+</div>
+<div class="wrapper">
+  <div class="ibox">
+      <div class="ibox-content">
+        <div class="flexbox">
+          <div class="flex-left">Ip 地址</div>
+          <div class="flex-right">{{ ip_address }}</div>
+        </div>
+      </div>
+  </div>
+  <div class="ibox">
+      <div class="ibox-content">
+          <h5>周期进度</h5>
+          <h2>{{ periodPercent }}</h2>
+          <div class="progress progress-mini">
+              <div style="width: {{ periodPercent }};" class="progress-bar"></div>
+          </div>
+
+          <div class="m-t-sm small">将于{{ refresh }}刷新</div>
+      </div>
+  </div>
+  <div class="ibox">
+      <div class="ibox-content">
+          <h5>已使用流量</h5>
+          <h2>{{ data.now }}/{{ data.max }}</h2>
+          <div class="text-center">
+              <canvas id="arc" width="130" height="150"></canvas>
+          </div>
+      </div>
+  </div>
+</div>

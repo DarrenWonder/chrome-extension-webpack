@@ -1,4 +1,5 @@
 var path = require("path");
+var webpack = require("webpack");
 var utils = require("./utils");
 var mode = process.env.NODE_ENV;
 var multi = utils.multiEntry();
@@ -27,7 +28,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: /node_modules|vendor/,
 				loader: "babel-loader"
 			},
 			...utils.binaryLoaders(config.assetsSub),
@@ -35,12 +36,20 @@ module.exports = {
 				sourcePath: config.sourcePath,
 				sourceMap: config.sourceMap,
 				extra: config.cssExtra
-			})
+			}),
+			{
+				test: /\.art$/,
+        loader: "art-template-loader"
+			}
 		]
 	},
 	devtool: config.devtool,
 	plugins: [
 		...utils.getHtml(multi.htmls),
+		new webpack.ProvidePlugin({
+		  $: '@/vendor/js/jquery-3.1.1.min',
+		  jQuery: '@/vendor/js/jquery-3.1.1.min'
+		}),
 		new CopyWebpackPlugin([
 			{
 				from: path.join(config.sourcePath, config.assetsSub),
